@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WikIA - Herramientas</title>
+  <link rel="icon" href="../assets/images/logoIA.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <header>
+    <a href="../index.html" class="logo">WikIA</a>
+    
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    
+    <nav class="nav-menu">
+      <a href="../index.html">Inicio</a>
+      <a href="history.html">Historia</a>
+      <a href="conceptos.html">Conceptos</a>
+      <a href="herramientas.html">Herramientas</a>
+      <a href="etica.html">Ética</a>
+      <a href="contact.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Herramientas de IA</h1>
+    <p>Explora las principales herramientas de Inteligencia Artificial según el área de aplicación.</p>
+
+    <section id="herramientas">
+
+      <article class="categoria" onclick="toggleSeccion('imagenes')">
+        <h2>Imágenes</h2>
+        <div id="imagenes" class="contenido" style="display:none;">
+          <ul>
+            <li><a href="https://stability.ai/" target="_blank" onclick="event.stopPropagation()">Stable Diffusion</a> - IA abierta para crear imágenes realistas o artísticas.</li>
+            <li><a href="https://www.midjourney.com/" target="_blank" onclick="event.stopPropagation()">MidJourney</a> - Popular en comunidades creativas, estilo artístico único.</li>
+            <li><a href="https://openai.com/dall-e" target="_blank" onclick="event.stopPropagation()">DALL·E</a> - Generación de imágenes a partir de texto.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="categoria" onclick="toggleSeccion('texto')">
+        <h2>Texto / Lenguaje</h2>
+        <div id="texto" class="contenido" style="display:none;">
+          <ul>
+            <li><a href="https://openai.com" target="_blank" onclick="event.stopPropagation()">GPT</a> - Generación y comprensión de texto.</li>
+            <li><a href="https://www.anthropic.com/" target="_blank" onclick="event.stopPropagation()">Claude</a> - IA enfocada en seguridad y lenguaje natural.</li>
+            <li><a href="https://huggingface.co/" target="_blank" onclick="event.stopPropagation()">Hugging Face Transformers</a> - Modelos abiertos para NLP.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="categoria" onclick="toggleSeccion('audio')">
+        <h2>Audio / Voz</h2>
+        <div id="audio" class="contenido" style="display:none;">
+          <ul>
+            <li><a href="https://openai.com/es-ES/" target="_blank" onclick="event.stopPropagation()">Whisper</a> - Transcripción y traducción de audio.</li>
+            <li><a href="https://elevenlabs.io/" target="_blank" onclick="event.stopPropagation()">ElevenLabs</a> - Síntesis de voz realista.</li>
+            <li><a href="https://www.descript.com/" target="_blank" onclick="event.stopPropagation()">Descript</a> - Edición de audio con IA.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="categoria" onclick="toggleSeccion('video')">
+        <h2>Video</h2>
+        <div id="video" class="contenido" style="display:none;">
+          <ul>
+            <li><a href="https://runwayml.com/" target="_blank" onclick="event.stopPropagation()">Runway ML</a> - Edición y generación de video con IA.</li>
+            <li><a href="https://pika.art/" target="_blank" onclick="event.stopPropagation()">Pika Labs</a> - Generación de clips a partir de texto.</li>
+            <li><a href="https://gemini.google/es/overview/image-generation/?hl=es" target="_blank" onclick="event.stopPropagation()">Nanobanana</a> - Popular en creación de videos cortos experimentales.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="categoria" onclick="toggleSeccion('datos')">
+        <h2>Datos / Análisis</h2>
+        <div id="datos" class="contenido" style="display:none;">
+          <ul>
+            <li><a href="https://cloud.google.com/automl" target="_blank" onclick="event.stopPropagation()">Google AutoML</a> - Entrenamiento automático de modelos.</li>
+            <li><a href="https://rapidminer.com/" target="_blank" onclick="event.stopPropagation()">RapidMiner</a> - Plataforma de análisis de datos con IA.</li>
+            <li><a href="https://www.knime.com/" target="_blank" onclick="event.stopPropagation()">KNIME</a> - Herramienta abierta para minería de datos.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="categoria" onclick="toggleSeccion('multimodal')">
+        <h2>Generativas / Multimodales</h2>
+        <div id="multimodal" class="contenido" style="display:none;">
+          <ul>
+            <li><a href="https://openai.com" target="_blank" onclick="event.stopPropagation()">GPT multimodal</a> - Texto + imágenes.</li>
+            <li><a href="https://deepmind.google/technologies/gemini/" target="_blank" onclick="event.stopPropagation()">Gemini</a> - IA multimodal avanzada.</li>
+            <li><a href="https://copilot.microsoft.com/" target="_blank" onclick="event.stopPropagation()">Copilot</a> - Asistente de productividad y aprendizaje.</li>
+          </ul>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 wikIA - sitio educativo</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

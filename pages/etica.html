@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>WikIA - Ética</title>
+ <link rel="icon" href="../assets/images/logoIA.png" type="image/png">
+ <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <header>
+   <a href="../index.html" class="logo">WikIA</a>
+    
+    <button class="menu-toggle" aria-label="Abrir menú">
+     <span class="bar"></span>
+     <span class="bar"></span>
+     <span class="bar"></span>
+    </button>
+    
+    <nav class="nav-menu">
+     <a href="../index.html">Inicio</a>
+     <a href="history.html">Historia</a>
+     <a href="conceptos.html">Conceptos</a>
+     <a href="herramientas.html">Herramientas</a>
+     <a href="etica.html">Ética</a>
+     <a href="contact.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+   <h1>Ética en la Inteligencia Artificial</h1>
+   <p>Explora las principales preguntas éticas sobre el futuro de la IA.</p>
+
+    <section id="faq">
+
+      <article class="pregunta">
+       <h2 onclick="toggleSeccion('q1')">¿Cómo pueden los algoritmos ser más transparentes?</h2>
+       <div id="q1" class="respuesta" style="display:none;">
+          <p>Los sistemas de IA deben explicar cómo toman decisiones. La falta de claridad puede generar desconfianza y sesgos ocultos. A futuro, será esencial que los modelos sean auditables y comprensibles para todos.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+       <h2 onclick="toggleSeccion('q2')">¿Qué pasará con nuestra privacidad en la era de la IA?</h2>
+        <div id="q2" class="respuesta" style="display:none;">
+         <p>La IA depende de grandes volúmenes de información personal. Proteger la privacidad será un desafío constante, especialmente con tecnologías que cruzan datos de múltiples fuentes. Los usuarios deben tener control sobre qué se comparte y cómo se usa.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q3')">¿Puede la IA evitar sesgos y discriminación?</h2>
+        <div id="q3" class="respuesta" style="display:none;">
+         <p>Los modelos pueden reproducir prejuicios presentes en los datos de entrenamiento. Esto puede afectar decisiones críticas como contrataciones, créditos o justicia. El reto será diseñar sistemas que reduzcan estos sesgos y promuevan la equidad.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q4')">¿Quién será responsable cuando una IA se equivoque?</h2>
+        <div id="q4" class="respuesta" style="display:none;">
+         <p>¿Quién responde cuando una IA comete un error grave? A futuro, se necesitarán marcos legales claros que definan responsabilidades entre desarrolladores, empresas y usuarios. La ética debe guiar la creación de estas leyes.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q5')">¿La IA reemplazará nuestros empleos?</h2>
+        <div id="q5" class="respuesta" style="display:none;">
+         <p>La automatización puede reemplazar tareas humanas, generando desempleo en ciertos sectores. Sin embargo, también abre oportunidades para nuevos roles y habilidades. La ética debe considerar cómo equilibrar innovación con justicia social.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q6')">¿Todos tendrán acceso a la IA avanzada?</h2>
+        <div id="q6" class="respuesta" style="display:none;">
+         <p>No todas las personas ni países tienen el mismo acceso a IA avanzada. Esto puede ampliar la brecha digital y económica. A futuro, será clave garantizar que la IA beneficie a todos y no solo a unos pocos.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q7')">¿Es ético usar IA en armas y vigilancia?</h2>
+        <div id="q7" class="respuesta" style="display:none;">
+         <p>La IA puede aplicarse en armas autónomas o sistemas de control masivo. Estos usos plantean dilemas éticos profundos sobre seguridad y derechos humanos. La sociedad deberá decidir límites claros para evitar abusos.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q8')">¿Qué impacto tendrá la IA en el medio ambiente?</h2>
+        <div id="q8" class="respuesta" style="display:none;">
+         <p>Entrenar modelos gigantes consume enormes cantidades de energía. El impacto ambiental de la IA es un tema creciente. A futuro, se buscarán soluciones más eficientes y sostenibles para reducir su huella ecológica.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q9')">¿Debe la IA tomar decisiones sin supervisión humana?</h2>
+        <div id="q9" class="respuesta" style="display:none;">
+         <p>La IA no debe reemplazar la capacidad de decisión humana en áreas críticas. Mantener al ser humano en el centro es un principio ético fundamental. El desafío será equilibrar autonomía de la máquina con supervisión responsable.</p>
+        </div>
+      </article>
+
+      <article class="pregunta">
+        <h2 onclick="toggleSeccion('q10')">¿Cómo nos prepararemos para convivir con la IA?</h2>
+        <div id="q10" class="respuesta" style="display:none;">
+         <p>La sociedad necesita comprender cómo funciona la IA para usarla de manera crítica. Sin educación, los usuarios pueden ser manipulados o desinformados. A futuro, la ética incluirá promover conocimiento accesible sobre estas tecnologías.</p>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 wikIA - sitio educativo</p>
+  </footer>
+
+  <!-- Enlace al JS externo -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

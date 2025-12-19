@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WikIA - Conceptos</title>
+  <link rel="icon" href="../assets/images/logoIA.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <header>
+    <a href="../index.html" class="logo">WikIA</a>
+    
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    
+    <nav class="nav-menu">
+      <a href="../index.html">Inicio</a>
+      <a href="history.html">Historia</a>
+      <a href="conceptos.html">Conceptos</a>
+      <a href="herramientas.html">Herramientas</a>
+      <a href="etica.html">Ética</a>
+      <a href="contact.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Conceptos Fundamentales</h1>
+    <p>En esta sección exploramos los pilares básicos de la Inteligencia Artificial.</p>
+
+    <section id="conceptos">
+      <div class="concept-buttons">
+        <button onclick="mostrarDefinicion('ia')">Definición IA</button>
+        <button onclick="mostrarDefinicion('datos')">Datos</button>
+        <button onclick="mostrarDefinicion('algoritmos')">Algoritmos</button>
+        <button onclick="mostrarDefinicion('entrenamiento')">Entrenamiento</button>
+        <button onclick="mostrarDefinicion('redes')">Redes y Deep Learning</button>
+      </div>
+
+      <div id="definicion" class="concept-def">
+        <p>Selecciona un concepto para ver su definición aquí.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 wikIA - sitio educativo</p>
+  </footer>
+
+  <!-- Enlace al JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

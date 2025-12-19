@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WikIA - Contacto</title>
+  <link rel="icon" href="../assets/images/logoIA.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <header>
+    <a href="../index.html" class="logo">WikIA</a>
+    
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    
+    <nav class="nav-menu">
+      <a href="../index.html">Inicio</a>
+      <a href="history.html">Historia</a>
+      <a href="conceptos.html">Conceptos</a>
+      <a href="herramientas.html">Herramientas</a>
+      <a href="etica.html">Ética</a>
+      <a href="contact.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contacto y Comentarios</h1>
+    <p>¿Tenés recomendaciones o ideas para mejorar wikiIA? Dejá tu mensaje aquí:</p>
+
+
+    <div class="contact-container">
+
+      <form id="contactForm">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="email">Correo electrónico:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="mensaje">Comentario:</label><br>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br><br>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+
+      <div class="image-wrapper"> <img src="../assets/images/contact.svg" alt="Ilustración de contacto" class="contact-image">
+       <a href="https://www.instagram.com" target="_blank" class="hotspot instagram" aria-label="Instagram"></a>
+       <a href="https://www.linkedin.com" target="_blank" class="hotspot linkedin" aria-label="LinkedIn"></a>
+       <a href="https://twitter.com" target="_blank" class="hotspot x" aria-label="X (Twitter)"></a>
+      </div>
+
+
+     
+    
+    
+    </div>
+    <!-- Aquí se mostrará la confirmación -->
+    <div id="respuesta"></div>
+  </main>
+  <footer>
+    <p>© 2025 wikIA - sitio educativo</p>
+  </footer>
+  <!-- Enlace al JS externo -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1205 @@
+/* --- 0. IMPORTAR FUENTE (Google Fonts: Poppins) --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+/* --- 1. VARIABLES Y RESET (Paleta "Neural Violet") --- */
+:root {
+    /* --- PALETA MODO OSCURO "DEEP DATA" --- */
+    
+    /* Fondo General*/
+    --bg-color: #0f172a; 
+    
+    /* Fondo de Tarjetas*/
+    --card-bg: #1e293b;  
+    
+    /* Color Primario*/
+    --primary-color: #393f42; 
+    
+    /* Color de Acento*/
+    --accent-color: #434b8d;
+    
+    /* Texto Principal*/
+    --text-color: #ffffff; 
+    
+    /* Texto sobre fondos oscuros*/
+    --text-light: #ffffff; 
+    
+    /* Sombras*/
+    --border-radius: 16px;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); 
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    /* --- ESTO SOLUCIONA TU PROBLEMA --- */
+    width: 100%;           /* Asegura que el cuerpo no sea más ancho que la ventana */
+    overflow-x: hidden;    /* CORTA todo lo que se salga por los lados */
+}
+
+
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+/*ENCABEZADO*/
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1100;    
+}
+
+
+
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+
+nav a {
+    color: rgba(255, 255, 255, 0.9); 
+    margin-left: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+
+
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+
+/*PIE DE PÁGINA (Footer)*/
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+
+
+
+/*INICIO*/
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    overflow-x: hidden; /* Seguridad extra */
+}
+
+/* Centrado vertical */
+body:has(.bienvenida) main {
+     justify-content: center;
+}
+
+
+/* NUEVO: Contenedor de las 3 columnas */
+/* --- 4. INICIO (INDEX) --- */
+
+.home-layout {
+    display: grid;
+    /* ANTES: 1.2fr 1fr */
+    /* AHORA: 2fr (texto) y 1fr (imagen) */
+    grid-template-columns: 2fr 2fr; 
+    
+    align-items: center;
+    gap: 10rem;
+    width: 80%;
+    max-width: 1200px;
+}
+/* Ajustes de la tarjeta de texto */
+.bienvenida {
+    width: 100%;
+    /* RECOMENDACIÓN: Alinear el texto a la izquierda se ve 
+       mucho mejor cuando tienes una imagen al lado */
+    text-align: left; 
+    padding: 0; /* Ya no necesita padding interno extra si el grid maneja el espacio */
+}
+
+/* Opcional: Si quieres que el título sea más impactante */
+.bienvenida h1 {
+    font-size: 5rem; /* Un poco más grande */
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+/* Esto afecta solo a la imagen de la derecha en el inicio */
+.right-img .hero-img {
+    max-width: 500px; /* Tú ajusta este número: 400px, 450px, 500px... */
+    width: 150%;      /* Para que se achique en pantallas pequeñas */
+    height: auto;
+}
+
+
+
+
+
+
+/*HISTORIA*/
+
+#timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 20px 0;
+}
+
+/*Línea Vertical Central*/
+#timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 3px;
+    z-index: 0;
+}
+
+/*tarjeta*/
+.decada {
+    padding: 10px 50px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+
+/* LADO IZQUIERDO (Impares) */
+.decada:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+
+/* LADO DERECHO (Pares) */
+.decada:nth-child(even) {
+    left: 50%;
+    text-align: left; 
+}
+
+/*Círculo*/
+
+.decada::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: var(--bg-color); /* Centro del color del fondo */
+    border: 5px solid var(--accent-color);
+    border-radius: 50%;
+    top: 20px; /* Altura del punto */
+    z-index: 1; /* Encima de la línea */
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5); /* Pequeño circulo blanco */
+}
+
+
+/* Ubicación del punto para la izquierda */
+.decada:nth-child(odd):after {
+    right: -17px; /* Justo en el centro de la línea */
+}
+
+/* Ubicación del punto para la derecha */
+.decada:nth-child(even):after {
+    left: -17px; /* Justo en el centro de la línea */
+}
+
+
+
+/*Estilo del Contenido*/
+.decada h2 {
+    color: var(--text-color);
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+
+/* La tarjeta blanca visible */
+.decada ul {
+    list-style: none;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: inline-block; /* La caja se ajusta al contenido */
+    text-align: left; /* El texto de la lista siempre se lee de izq a der */
+    margin: 0;
+    width: 100%; /* Ocupa todo el ancho disponible del bloque */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.decada li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #e0e0e0; /* Línea punteada separadora */
+}
+
+.decada li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+/* --- IMAGEN DECORATIVA AL COSTADO --- */
+
+.timeline-side-img {
+    position: absolute;
+    top: 60px;     
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* EFECTO HOVER*/
+.timeline-side-img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+/*Texto a la Izquierda -> Imagen a la DERECHA */
+.decada:nth-child(odd) .timeline-side-img {
+    left: 110%;
+}
+
+/*Texto a la Derecha -> Imagen a la IZQUIERDA */
+.decada:nth-child(even) .timeline-side-img {
+    right: 110%;
+}
+
+
+
+
+
+
+
+/*archivero de conceptos*/
+
+#conceptos {
+    max-width: 900px;
+    margin: 4rem auto; /* Centrado con buen margen vertical */
+    padding: 0 20px;
+}
+
+/* --- Contenedor de las Pestañas (Botones) --- */
+.concept-buttons {
+    display: flex;
+    gap: 4px; 
+    flex-wrap: wrap; 
+    align-items: flex-end; 
+    
+    /* CAMBIOS CLAVE AQUÍ ABAJO: */
+    justify-content: center; /* 1. Centra los botones horizontalmente */
+    padding-left: 0;         /* 2. Quitamos el padding izquierdo que empujaba todo */
+    width: 100%;             /* 3. Aseguramos que use todo el ancho para poder centrar */
+    
+    margin-bottom: -1px; 
+    position: relative;
+    z-index: 10; 
+}
+
+
+/* --- Estilo de cada Pestaña --- */
+.concept-buttons button {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 12px 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 12px 12px 0 0; 
+    transition: all 0.2s ease;
+    opacity: 0.8;
+}
+
+/* --- Efecto Hover y Focus (Pestaña Activa) --- */
+.concept-buttons button:hover,
+.concept-buttons button:focus {
+    background-color: var(--card-bg); /* Se vuelve blanca (activa) */
+    color: var(--accent-color); /* Texto índigo */
+    padding-bottom: 15px; /* Crece un poco hacia arriba */
+    opacity: 1;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.05); /* Sombra suave arriba */
+    font-weight: 700;
+    outline: none; /* Quitamos el borde azul por defecto */
+}
+
+/* --- El Panel de Contenido (La "Hoja" de papel) --- */
+#definicion {
+    background-color: var(--card-bg);
+    min-height: 250px;
+    padding: 3rem;
+    border-radius: 16px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0; /* Esquina recta para conectar con la 1ra pestaña */
+    box-shadow: var(--shadow);
+    
+    /* Centrado del texto */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+}
+
+
+/* --- Texto de la Definición --- */
+#definicion p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin: 0;
+    
+    /* CAMBIO OPCIONAL: */
+    max-width: 700px; /* Antes 800px. Un texto más angosto es más fácil de leer */
+    width: 100%;
+    
+    text-align: center;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* --- Animación Suave --- */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+
+
+
+
+
+
+/*HERRAMIENTAS (Grid Interactivo)*/
+
+#herramientas {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 20px;
+    
+    /* EL GRID MÁGICO */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+    
+    /* --- LA CORRECCIÓN MÁGICA --- */
+    align-items: start; 
+}
+
+/* --- ESTILO BASE DE LA TARJETA (CORREGIDO) --- */
+.categoria {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    text-align: center;
+    
+    /* DEFINICIÓN DE TAMAÑO */
+    min-height: 280px; 
+    height: fit-content; 
+    
+    /* POSICIONAMIENTO EN GRID */
+    align-self: start; 
+    
+    /* FLEXBOX INTERNO */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* CAMBIO: Ahora la manita aparece en toda la tarjeta */
+    cursor: pointer; 
+    /* CAMBIO: Evita que se seleccione texto al hacer clic rápido en la tarjeta */
+    user-select: none; 
+    
+    overflow: hidden;
+}
+
+/* Efecto al pasar el mouse por la tarjeta */
+.categoria:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(52, 31, 151, 0.15);
+}
+
+/* --- EL TÍTULO Y EL ÍCONO (Estado Inicial) --- */
+.categoria h2 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 0;
+    transition: all 0.3s ease;
+    
+    /* CAMBIO: Quitamos 'cursor: pointer' de aquí, ya lo tiene la tarjeta padre */
+    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* --- AGREGANDO ÍCONOS CON CSS --- */
+.categoria h2::before {
+    content: ""; /* Se deja vacío porque ya no es texto */
+    display: block;
+    margin-bottom: 15px;
+    
+    /* Dimensiones del ícono */
+    width: 64px;  
+    height: 64px; 
+    
+    /* Configuración para que la imagen se vea bien */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Transición suave */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+/* 1. Imágenes */
+.categoria:nth-child(1) h2::before { 
+    background-image: url('../assets/icons/imagenes.svg'); 
+} 
+
+/* 2. Texto */
+.categoria:nth-child(2) h2::before { 
+    background-image: url('../assets/icons/text.svg'); 
+} 
+
+/* 3. Audio */
+.categoria:nth-child(3) h2::before { 
+    background-image: url('../assets/icons/audio.svg'); 
+} 
+
+/* 4. Video */
+.categoria:nth-child(4) h2::before { 
+    background-image: url('../assets/icons/video.svg'); 
+} 
+
+/* 5. Datos */
+.categoria:nth-child(5) h2::before { 
+    background-image: url('../assets/icons/data.svg'); 
+} 
+
+/* 6. Multimodal (Usamos generales.svg aquí) */
+.categoria:nth-child(6) h2::before { 
+    background-image: url('../assets/icons/generales.svg'); 
+}
+
+/* --- LA MAGIA: ESTADO "ACTIVO" (Cuando haces clic) --- */
+
+/* Detectamos si el DIV de contenido está visible */
+.categoria:has(.contenido[style*="block"]) {
+    justify-content: flex-start; /* Alineación arriba */
+    padding-top: 1.5rem;
+    background-color: var(--card-bg); 
+    border: 2px solid var(--accent-color); 
+}
+
+.categoria:has(.contenido[style*="block"]) h2 {
+    font-size: 1rem; /* Título pequeño */
+    height: auto;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.categoria:has(.contenido[style*="block"]) h2::before {
+    display: none; 
+}
+
+
+
+
+/* --- LA LISTA DE HERRAMIENTAS (El contenido oculto) --- */
+.contenido {
+    width: 100%;
+    animation: slideUp 0.4s ease-out;
+    
+    /* CAMBIO: Permitimos seleccionar texto dentro de la lista (porque lo bloqueamos en la tarjeta) */
+    user-select: text; 
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.contenido ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; 
+}
+
+.contenido li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color); 
+}
+
+.contenido a {
+    font-weight: 600;
+    color: var(--text-color);
+    display: block; 
+}
+
+.contenido a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+/* ÉTICA (Preguntas Frecuentes)*/
+#faq {
+    max-width: 1100px; 
+    width: 100%; /* Asegura que intente ocupar todo ese espacio */
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.pregunta {
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Para respetar bordes redondos */
+    box-shadow: var(--shadow);
+    background-color: var(--card-bg);
+}
+
+/* El encabezado (La pregunta visible) */
+.pregunta h2 {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 1.5rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; /* Texto a la izq, flecha a la der */
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 6px solid transparent; /* Borde invisible inicial */
+}
+
+/* Efecto Hover en la pregunta */
+.pregunta h2:hover {
+    background-color: var(--card-bg);
+    color: var(--accent-color);
+    padding-left: 2.5rem; /* Pequeño desplazamiento a la derecha */
+}
+
+/* --- LA FLECHA (Hecha con CSS puro) --- */
+.pregunta h2::after {
+    content: '▼'; /* Carácter de flecha */
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+/* --- ESTADO ACTIVO (Cuando la respuesta está visible) --- */
+/* Detectamos si la respuesta tiene display: block */
+.pregunta:has(.respuesta[style*="block"]) h2 {
+    background-color: var(--primary-color); /* Se pone morado */
+    color: white;
+    border-left: 6px solid var(--accent-color); /* Borde verde */
+}
+
+/* Rotamos la flecha cuando está abierto */
+.pregunta:has(.respuesta[style*="block"]) h2::after {
+    transform: rotate(180deg); /* Gira hacia arriba */
+    color: white;
+}
+
+/* --- La Respuesta (Oculta por defecto) --- */
+.respuesta {
+    padding: 0 2rem 2rem 2rem; /* Padding lateral y abajo */
+    background-color: var(--card-bg); /* Fondo blanco continuado */
+    color: var(--text-color);
+    line-height: 1.6;
+    /* La animación de despliegue la hace el JS (block/none), 
+       pero podemos animar la opacidad */
+    animation: fadeIn 0.5s ease;
+}
+
+
+
+
+
+
+
+
+
+/*CONTACTO (Formulario)*/
+/* --- NUEVO CONTENEDOR PRINCIPAL --- */
+.contact-container {
+    display: flex;             /* Pone el formulario y la imagen lado a lado */
+    justify-content: center;   /* Centra el grupo horizontalmente */
+    align-items: flex-end;     /* Alinea la imagen con la parte INFERIOR del formulario */
+    max-width: 900px;          /* Un ancho máximo para todo el conjunto */
+    margin: 2rem auto;         /* Centrado en la página */
+    padding: 0 20px;           /* Un poco de aire a los lados en pantallas chicas */
+}
+
+
+
+/* Estilo del contenedor del formulario */
+#contactForm {
+    background-color: var(--card-bg); /* Fondo blanco */
+    padding: 3rem;
+    border-radius: 0px var(--border-radius);
+    box-shadow: var(--shadow);
+    max-width: 500px; /* Ancho ideal para lectura */
+    width: 100%;
+    margin: 2rem auto; /* Centrado */
+    border-top: 6px solid var(--accent-color); /* Detalle verde arriba */
+    z-index: 1;
+}
+
+/* Etiquetas (Labels) */
+#contactForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Campos de texto (Inputs y Textarea) */
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 14px 16px; /* Espacios cómodos */
+    margin-bottom: 20px;
+    border: 5px solid var(--accent-color); /* Borde gris sutil */
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif; /* Tu fuente */
+    font-size: 1rem;
+    background-color: var(--primary-color); /* Fondo gris muy claro */
+    transition: all 0.3s ease;
+    resize: vertical; /* Permite estirar el textarea solo hacia abajo */
+}
+
+/* Efecto al hacer clic para escribir (Focus) */
+#contactForm input:focus,
+#contactForm textarea:focus {
+    background-color: #ffffff; /* Se pone blanco puro */
+    outline: none;
+}
+
+/* El Botón de Enviar */
+#contactForm button {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--primary-color); /* Índigo */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+/* Efecto Hover en el botón */
+#contactForm button:hover {
+    background-color: #4b36b3; /* Un poco más claro */
+    transform: translateY(-3px); /* Se eleva un poquito */
+    box-shadow: 0 5px 15px rgba(52, 31, 151, 0.3); /* Sombra morada */
+}
+
+/* Mensaje de respuesta (Aparece después de enviar) */
+#respuesta {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--primary-color);
+    background-color: #e6fffa; /* Fondo verde muy suave */
+    border-radius: 8px;
+    padding: 0; /* Se llenará con JS si es necesario */
+}
+
+#respuesta p {
+    padding: 15px;
+    margin: 0;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+}
+
+
+/* --- ESTILOS PARA LA NUEVA IMAGEN --- */
+/* --- NUEVO: El contenedor maneja la POSICIÓN --- */
+.image-wrapper {
+    position: relative;
+    width: fit-content;
+    
+    /* TUS VALORES ORIGINALES: */
+    margin-left: -20px;
+    top: -32px;
+    z-index: 0; 
+    pointer-events: none;
+}
+
+/* --- TU IMAGEN: Solo tamaño --- */
+.contact-image {
+    max-width: 350px;
+    height: auto;
+    display: block;
+    pointer-events: none; /* La imagen no estorba al click */
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+}
+
+/* --- LOS BOTONES (Clase unificada: .hotspot) --- */
+.hotspot {
+    position: absolute;
+    width: 70px;          /* Un poco más grandes para asegurar el clic */
+    height: 70px;
+    border-radius: 50%;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 30;          /* Más alto que la imagen */
+    display: block;
+    /* DEPURACIÓN: Color rojo semitransparente para verlos */
+    /* Cuando termines de acomodar, borra o comenta la siguiente línea: */
+    /*background-color: rgba(255, 0, 0, 0.5);*/
+}
+
+/* --- POSICIONES (Ajusta estos porcentajes viendo los círculos rojos) --- */
+.instagram {
+    top: 5.5%;    /* Sube o baja */
+    left: 33%;   /* Izquierda o derecha */
+}
+
+.linkedin {
+    top: 0.2%;
+    left: 78.5%;
+}
+
+.x {
+    top: 22.5%;
+    left: 64.5%;
+}
+
+
+
+/*
+
+
+responsive
+
+
+*/
+
+
+/*MENU HAMBURGUESA (RESPONSIVE)*/
+
+/* Estilo del botón (oculto en PC) */
+.menu-toggle {
+    display: none; 
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Por encima de todo */
+}
+
+/* Las rayitas del botón */
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-light); /* Usa el color blanco de tu paleta */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* --- MEDIA QUERY: Solo para celulares/tablets (menos de 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Mostrar el botón */
+    .menu-toggle {
+        position: relative;
+        display: flex; 
+    }
+    /* 2. Ocultar y estilizar el menú desplegable */
+    .nav-menu {
+        position: absolute;   /* Se queda arriba (no te sigue) */
+        top: 0;
+        
+        /* CAMBIO CLAVE 1: Lo colocamos en la pantalla... */
+        left: 0;              
+        width: 100%;
+        height: 50vh;        /* Altura de una pantalla completa */
+        
+        background-color: var(--card-bg);
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        
+        /* CAMBIO CLAVE 2: Lo ocultamos moviéndolo virtualmente, no físicamente */
+        transform: translateX(100%); 
+        transition: transform 0.4s ease; /* Animamos la transformación */
+        
+        z-index: 1000;
+    }
+
+    /* Enlaces en modo móvil */
+    .nav-menu a {
+        font-size: 1.2rem;
+        color: var(--text-color);
+        margin: 0;
+        margin-left: 0; /* Reseteamos el margen del escritorio */
+    }
+
+    /* 3. CLASE ACTIVA (Cuando JS la activa) */
+    .nav-menu.active {
+        /* right: 0;  <-- ESTO YA NO SE USA */
+        transform: translateX(0);
+    }
+
+    /* Animación del botón a "X" al abrir */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0; /* La del medio desaparece */
+    }
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* Agrega 'html' aquí para asegurar que nada se salga */
+    html, body {
+        overflow-x: hidden;
+    }
+
+
+
+/*inicio*/
+
+
+/*/* =========================================
+   RESPONSIVE: INICIO (Solo Móvil)
+   ========================================= */
+
+@media screen and (max-width: 850px) {
+
+    /* --- 3. INICIO (Index) --- */
+    
+    .home-layout {
+        grid-template-columns: 1fr; /* 1 columna en vez de 2 */
+        gap: 2rem;
+        text-align: center;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .bienvenida {
+        text-align: center;
+        order: 1; /* Texto primero */
+    }
+
+    .bienvenida h1 {
+        font-size: 3rem; 
+        margin-bottom: 1rem;
+    }
+    
+    .bienvenida p {
+        font-size: 1rem;
+    }
+
+    /* Contenedor de la imagen */
+    .hero-image-container {
+        order: 2; /* Imagen abajo */
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    /* La imagen en sí */
+    .right-img .hero-img {
+        width: 80%;       
+        max-width: 300px;
+        height: auto;
+    }
+
+
+
+
+
+
+
+
+
+ /* =========================================
+   AQUÍ EMPIEZA EL RESPONSIVE (MÓVIL)
+   ========================================= */
+
+
+    /* --- AJUSTES GENERALES --- */
+    body { overflow-x: hidden; }
+    main { padding: 1rem; width: 100%; text-align:center; }
+
+
+    /* --- INICIO --- */
+    .home-layout { grid-template-columns: 1fr; }
+    /* ... resto de inicio ... */
+
+
+    /* --- HISTORIA (El código nuevo va AQUÍ ADENTRO) --- */
+    
+    #timeline::after {
+        left: 31px; /* Línea a la izquierda SOLO en móvil */
+    }
+
+    .decada {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .decada:nth-child(odd),
+    .decada:nth-child(even) {
+        left: -4px;
+        text-align: left;
+    }
+
+    .decada:nth-child(odd)::after,
+    .decada:nth-child(even)::after {
+        left: 18px;
+        right: auto;
+    }
+
+    .timeline-side-img {
+        display: none; /* Ocultar imágenes SOLO en móvil */
+    }
+
+ /* <--- 2. ESTA LLAVE CIERRA LA "JAULA". ¡ES FUNDAMENTAL! */
+
+
+
+ /*
+ conceptos fundamentales
+ */
+ /* --- ESTO VA DENTRO DE TU @MEDIA (al final del archivo styles.css) --- */
+
+
+    /* ... (Acá arriba tienes lo de Inicio, Historia, Contacto) ... */
+
+
+    /* --- 5. CONCEPTOS (Solo para celular) --- */
+    
+    #conceptos {
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .concept-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columnas */
+        gap: 5px;
+        width: 100%;
+        max-width: 700px;
+        margin-bottom: 0;
+    }
+
+    .concept-buttons button {
+        width: 100%;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        padding: 12px 5px;
+        margin: 0;
+    }
+
+    /* El último botón ocupa 2 espacios */
+    .concept-buttons button:last-child {
+        grid-column: span 2; 
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    /* La caja de texto */
+    #definicion {
+        width: 100%;
+        max-width: 700px;
+        border-radius: 16px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: -1px;
+    }
+
+ /* <--- ESTA LLAVE CIERRA TODO EL RESPONSIVE (No la borres) */
+
+
+
+
+ /*
+ HERRAMIENTAS
+ */
+
+
+ /* =========================================
+   RESPONSIVE: HERRAMIENTAS (Bloque independiente)
+   ========================================= */
+
+
+
+    /* El contenedor de la cuadrícula: 1 sola columna */
+    #herramientas {
+        display: grid;
+        grid-template-columns: 1fr;  /* Fila india (uno abajo del otro) */
+        gap: 20px;                   /* Espacio entre tarjetas */
+        padding: 0 15px;             /* Margen a los costados para que no pegue al borde */
+        margin-top: 1rem;
+        width: 100%;
+        max-width: 400px;            /* Límite de ancho para que no se vean gigantes */
+        margin-left: auto;           /* Centrado horizontal */
+        margin-right: auto;
+    }
+
+    /* Las tarjetas individuales: Más compactas */
+    .categoria {
+        min-height: 180px;           /* Menos altas que en PC */
+        height: auto;                /* Altura automática */
+        padding: 1.5rem;             /* Relleno interno cómodo */
+        
+        /* Asegura que el contenido se centre */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Ajuste de los íconos (un poco más chicos) */
+    .categoria h2::before {
+        width: 50px; 
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    /* Ajuste del texto del título */
+    .categoria h2 {
+        font-size: 1.3rem;
+    }
+
+    /* Cuando se abre la tarjeta (click) */
+    .categoria:has(.contenido[style*="block"]) {
+        padding-top: 1.5rem;
+        justify-content: flex-start; /* Sube el título */
+    }
+
+
+
+
+
+
+ /* =========================================
+   RESPONSIVE: CONTACTO (Solo Móvil)
+   ========================================= */
+
+
+
+    /* --- CONTACTO SIMPLIFICADO --- */
+
+    /* 1. Ocultar todo el bloque de la imagen y redes */
+    .image-wrapper {
+        display: none; 
+    }
+
+    /* 2. Ajustar el contenedor principal */
+    .contact-container {
+        display: block; /* Quitamos Flexbox para que no busque alinear nada */
+        padding: 0;     /* Limpiamos padding extra */
+        margin-top: 1rem;
+    }
+
+    /* 3. Asegurar que el formulario se vea bien y centrado */
+    #contactForm {
+        width: 100%;
+        max-width: 100%; /* Ocupa todo el ancho en el celu */
+        margin: 0 auto;  /* Centrado */
+        border-radius: 20px; /* Le devolvemos bordes redondos completos si quieres */
+    }
+
+}
