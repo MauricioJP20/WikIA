@@ -10,6 +10,16 @@
 </head>
 
 <body>
+  <!--
+    Página de contacto:
+    - El formulario con id="contactForm" es manejado por `js/main.js`.
+      Al enviar, el formulario no recarga la página: JavaScript intercepta
+      el evento `submit`, muestra un mensaje en #respuesta y limpia los campos.
+    - Los enlaces con target="_blank" abren redes sociales en pestañas nuevas.
+      Por seguridad se añadió `rel="noopener noreferrer"` para prevenir acceso.
+    - Los hotspots son enlaces posicionados sobre la imagen; asegúrate de
+      probarlos con teclado y pantalla táctil para validar accesibilidad.
+  -->
   <header>
     <a href="../index.html" class="logo">WikIA</a>
     
@@ -36,6 +46,12 @@
 
     <div class="contact-container">
 
+      <!-- Formulario de contacto:
+           - IDs: `nombre`, `email`, `mensaje` son referenciados por `js/main.js`.
+           - El div `#respuesta` se usa para mostrar un mensaje tras el submit.
+           - Actualmente el formulario solo muestra una respuesta en cliente;
+             para guardar mensajes necesitas un backend o integrar un servicio.
+      -->
       <form id="contactForm">
         <label for="nombre">Nombre:</label><br>
         <input type="text" id="nombre" name="nombre" required><br><br>
@@ -51,9 +67,9 @@
 
 
       <div class="image-wrapper"> <img src="../assets/images/contact.svg" alt="Ilustración de contacto" class="contact-image">
-       <a href="https://www.instagram.com" target="_blank" class="hotspot instagram" aria-label="Instagram"></a>
-       <a href="https://www.linkedin.com" target="_blank" class="hotspot linkedin" aria-label="LinkedIn"></a>
-       <a href="https://twitter.com" target="_blank" class="hotspot x" aria-label="X (Twitter)"></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="hotspot instagram" aria-label="Instagram"></a>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hotspot linkedin" aria-label="LinkedIn"></a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hotspot x" aria-label="X (Twitter)"></a>
       </div>
 
 
@@ -67,7 +83,7 @@
   <footer>
     <p>© 2025 wikIA - sitio educativo</p>
   </footer>
-  <!-- Enlace al JS externo -->
+  <!-- Cargar `js/main.js` al final del body: asegura que el DOM exista antes de ejecutar `init()` -->
   <script src="../js/main.js"></script>
 </body>
 </html>

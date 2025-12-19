@@ -11,6 +11,14 @@
 </head>
 
 <body>
+  <!--
+    Esta página muestra los 'Conceptos' explicados.
+    - Los botones dentro de .concept-buttons llaman a `mostrarDefinicion(concepto)`
+      en `js/main.js`, que escribe el texto en el elemento con id="definicion".
+    - Para ver el efecto: pulsa un botón y observa cómo cambia el párrafo central.
+    - Si quieres separar comportamiento de estructura, se puede mover el
+      atributo inline `onclick` a un listener en `js/main.js`.
+  -->
   <header>
     <a href="../index.html" class="logo">WikIA</a>
     
@@ -35,6 +43,11 @@
     <p>En esta sección exploramos los pilares básicos de la Inteligencia Artificial.</p>
 
     <section id="conceptos">
+      <!-- Botones de conceptos:
+           - Cada botón llama a `mostrarDefinicion('clave')` en `js/main.js`.
+           - Para migrar a listeners, asigna `data-key="ia"` y registra los
+             handlers en el init() para separar comportamiento de markup.
+      -->
       <div class="concept-buttons">
         <button onclick="mostrarDefinicion('ia')">Definición IA</button>
         <button onclick="mostrarDefinicion('datos')">Datos</button>
@@ -53,7 +66,7 @@
     <p>© 2025 wikIA - sitio educativo</p>
   </footer>
 
-  <!-- Enlace al JS -->
+  <!-- Cargar `js/main.js` al final del body: asegura que el DOM exista antes de ejecutar `init()` -->
   <script src="../js/main.js"></script>
 </body>
 </html>

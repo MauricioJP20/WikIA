@@ -1,31 +1,39 @@
-/* --- 0. IMPORTAR FUENTE (Google Fonts: Poppins) --- */
+/*
+    styles.css — Guía para principiantes
+
+    Propósito:
+    - Este archivo contiene las reglas visuales (colores, tamaños, layout) que
+        hacen que las páginas se vean como en el diseño. Mantener CSS separado de
+        HTML permite cambiar apariencia sin tocar la estructura.
+
+    Organización general (cómo leerlo):
+    1) Import de fuentes externas (Google Fonts).
+    2) Variables CSS en `:root` — definen la paleta y valores reutilizables.
+    3) Reset y reglas base (`*`, `body`, `a`).
+    4) Componentes principales: `header`, `nav`, `main`, `footer`, tarjetas, etc.
+    5) Reglas responsive dentro de `@media` para adaptar el diseño a móviles.
+
+    Nota práctica (ejemplo):
+    - Si quieres cambiar el color de fondo de todo el sitio, edita `--bg-color`.
+        Todas las reglas que usan `var(--bg-color)` cambiarán automáticamente.
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 
-/* --- 1. VARIABLES Y RESET (Paleta "Neural Violet") --- */
+/*
+    Variables globales (definidas en :root)
+    - Las variables comienzan con `--` y se usan con `var(--nombre)`.
+    - Mantén aquí colores y medidas que se repiten, facilita cambios de tema.
+*/
 :root {
-    /* --- PALETA MODO OSCURO "DEEP DATA" --- */
-    
-    /* Fondo General*/
-    --bg-color: #0f172a; 
-    
-    /* Fondo de Tarjetas*/
-    --card-bg: #1e293b;  
-    
-    /* Color Primario*/
-    --primary-color: #393f42; 
-    
-    /* Color de Acento*/
-    --accent-color: #434b8d;
-    
-    /* Texto Principal*/
-    --text-color: #ffffff; 
-    
-    /* Texto sobre fondos oscuros*/
-    --text-light: #ffffff; 
-    
-    /* Sombras*/
-    --border-radius: 16px;
-    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); 
+        --bg-color: #0f172a;        /* fondo general de la página */
+        --card-bg: #1e293b;        /* fondo de tarjetas y paneles */
+        --primary-color: #393f42;  /* color principal del header/footer */
+        --accent-color: #434b8d;   /* color de acento para botones/enlaces */
+        --text-color: #ffffff;     /* color principal del texto */
+        --text-light: #ffffff;     /* texto sobre fondos oscuros */
+        --border-radius: 16px;     /* radio de bordes para tarjetas */
+        --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); /* sombra para elevación */
 }
 
 * {
@@ -45,9 +53,13 @@ body {
     flex-direction: column;
     min-height: 100vh;
     
-    /* --- ESTO SOLUCIONA TU PROBLEMA --- */
-    width: 100%;           /* Asegura que el cuerpo no sea más ancho que la ventana */
-    overflow-x: hidden;    /* CORTA todo lo que se salga por los lados */
+    /* Seguridad de layout:
+       Evita que elementos desborden horizontalmente y provoquen barras de
+       desplazamiento. Mantener `overflow-x: hidden` y `width: 100%` ayuda a
+       contener imágenes o elementos posicionados que podrían causar scroll.
+    */
+    width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -61,7 +73,12 @@ a {
 
 
 
-/*ENCABEZADO*/
+/*
+    Encabezado (header)
+    - Contiene el logo y la navegación principal.
+    - En pantallas pequeñas el menú se transforma en un botón "hamburguesa".
+    - El estilo aquí define colores, padding y disposición en línea.
+*/
 header {
     background-color: var(--primary-color);
     color: var(--text-light);
@@ -98,7 +115,11 @@ nav a:hover {
 }
 
 
-/*PIE DE PÁGINA (Footer)*/
+/*
+    Pie de página (footer)
+    - Estilo consistente con el header para mantener la misma paleta.
+    - Suele contener información legal, copyright o enlaces secundarios.
+*/
 footer {
     background-color: var(--primary-color);
     color: var(--text-light);
@@ -111,7 +132,11 @@ footer {
 
 
 
-/*INICIO*/
+/*
+    Main / Inicio
+    - Contenedor principal del contenido de cada página.
+    - Aquí se configura el comportamiento de centrado y espaciado del contenido.
+*/
 main {
     flex: 1;
     display: flex;
@@ -121,14 +146,20 @@ main {
     overflow-x: hidden; /* Seguridad extra */
 }
 
-/* Centrado vertical */
-body:has(.bienvenida) main {
-     justify-content: center;
-}
-
+/* Fallback when :has() is not supported */
+body.has-bienvenida main { justify-content: center; }
+    /* Seguridad de layout:
+        Evita que elementos desborden horizontalmente y provoquen barras de
+        desplazamiento. Mantener `overflow-x: hidden` y `width: 100%` ayuda a
+        contener imágenes o elementos posicionados que podrían causar scroll.
+    */
 
 /* NUEVO: Contenedor de las 3 columnas */
 /* --- 4. INICIO (INDEX) --- */
+/* Diseño de la sección principal (inicio)
+    - `home-layout` utiliza grid para distribuir el contenido en columnas (texto / imagen).
+    - Ajusta `grid-template-columns` para cambiar la proporción entre zonas según el diseño.
+*/
 
 .home-layout {
     display: grid;
@@ -141,28 +172,42 @@ body:has(.bienvenida) main {
     width: 80%;
     max-width: 1200px;
 }
+/* Nota sobre el layout:
+     - Si cambias las proporciones del grid, prueba en varias anchuras para
+         asegurarte de que el texto no quede demasiado comprimido o desbordado.
+*/
 /* Ajustes de la tarjeta de texto */
 .bienvenida {
     width: 100%;
     /* RECOMENDACIÓN: Alinear el texto a la izquierda se ve 
        mucho mejor cuando tienes una imagen al lado */
     text-align: left; 
+     /* Consejo visual: mantener el texto alineado a la izquierda mejora la
+         legibilidad cuando se sitúa una imagen al lado. */
     padding: 0; /* Ya no necesita padding interno extra si el grid maneja el espacio */
 }
 
 /* Opcional: Si quieres que el título sea más impactante */
 .bienvenida h1 {
     font-size: 5rem; /* Un poco más grande */
+        font-size: 5rem; /* Título grande para impacto visual en pantallas amplias */
     line-height: 1.1;
     margin-bottom: 1rem;
 }
 
 /* Esto afecta solo a la imagen de la derecha en el inicio */
+/* Limitador de la imagen principal del hero en la sección de inicio.
+    `max-width` y `width` controlan cómo escala la imagen en distintas pantallas.
+*/
 .right-img .hero-img {
     max-width: 500px; /* Tú ajusta este número: 400px, 450px, 500px... */
     width: 150%;      /* Para que se achique en pantallas pequeñas */
     height: auto;
 }
+
+/* Consejo: para optimizar rendimiento, usa imágenes SVG para iconos o
+   versiones comprimidas (webp) para fotos pesadas. Ajusta `max-width`
+   en este selector para controlar su tamaño en pantallas grandes. */
 
 
 
@@ -170,6 +215,7 @@ body:has(.bienvenida) main {
 
 
 /*HISTORIA*/
+/* Sección: Historia — línea de tiempo */
 
 #timeline {
     position: relative;
@@ -193,6 +239,9 @@ body:has(.bienvenida) main {
 }
 
 /*tarjeta*/
+/* Estilos de las tarjetas dentro de la línea de tiempo */
+/* Cada `.decada` funciona como una tarjeta que contiene la información
+    correspondiente a ese periodo. */
 .decada {
     padding: 10px 50px;
     position: relative;
@@ -215,6 +264,7 @@ body:has(.bienvenida) main {
 }
 
 /*Círculo*/
+/* Punto circular que marca la posición en la línea de tiempo */
 
 .decada::after {
     content: '';
@@ -345,6 +395,12 @@ body:has(.bienvenida) main {
     position: relative;
     z-index: 10; 
 }
+
+/* Las pestañas de conceptos (botones) usan `onclick` inline en HTML actualmente.
+   Para mejorar separación de responsabilidades, considera migrar esa lógica
+   a `js/main.js`: añade listeners a `.concept-buttons button` y usa
+   `data-*` attributes para la clave del concepto si necesitas más datos.
+*/
 
 
 /* --- Estilo de cada Pestaña --- */
@@ -568,6 +624,21 @@ body:has(.bienvenida) main {
     display: none; 
 }
 
+/* Fallbacks for browsers without :has() support */
+.categoria.open {
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+    background-color: var(--card-bg);
+    border: 2px solid var(--accent-color);
+}
+.categoria.open h2 {
+    font-size: 1rem;
+    height: auto;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+.categoria.open h2::before { display: none; }
+
 
 
 
@@ -679,6 +750,17 @@ body:has(.bienvenida) main {
 /* Rotamos la flecha cuando está abierto */
 .pregunta:has(.respuesta[style*="block"]) h2::after {
     transform: rotate(180deg); /* Gira hacia arriba */
+    color: white;
+}
+
+/* Fallbacks for browsers without :has() support */
+.pregunta.open h2 {
+    background-color: var(--primary-color);
+    color: white;
+    border-left: 6px solid var(--accent-color);
+}
+.pregunta.open h2::after {
+    transform: rotate(180deg);
     color: white;
 }
 
@@ -1203,3 +1285,9 @@ responsive
     }
 
 }
+
+/* Añadir nuevas variables:
+     - Para crear variantes de color (modo claro/oscuro) duplica este bloque
+         y cambia los valores. Usa nombres descriptivos para facilitar mantenimiento.
+     - Ejemplo: --bg-color-alt, --accent-strong, --muted-text
+*/

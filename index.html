@@ -12,10 +12,36 @@
 </head>
 
 <body>
+  <!--
+    Estructura de la página (guía para principiantes):
+    - <header>: contiene el logo y la navegación principal.
+      * El botón con clase "menu-toggle" es la hamburguesa que se muestra
+        en pantallas pequeñas. Al hacer clic, JavaScript añade/quita la
+        clase "active" a la nav para mostrar u ocultar el menú.
+    - <main>: contenido principal (bienvenida, imagen hero).
+      * La clase "home-layout" organiza el texto y la imagen en dos columnas.
+    - <footer>: pie de página con información permanente.
+
+    Ejemplo visual en el navegador:
+    - En móvil, pulsa el botón hamburguesa (arriba a la derecha) y debería
+      aparecer el menú con los enlaces. Si no aparece, el archivo `js/main.js`
+      contiene la lógica que gestiona ese comportamiento.
+  -->
   <header>
     <a href="index.html" class="logo">WikIA</a>
+    <!-- Navegación principal:
+         - Las rutas aquí son relativas; al mover archivos ajusta los href.
+         - `js/main.js` controla la visibilidad del menú en móviles usando
+           la clase `nav-menu` y el botón con clase `menu-toggle`.
+    -->
   
       <button class="menu-toggle" aria-label="Abrir menú">
+
+        <!-- Botón hamburguesa:
+             - Añade/quita la clase `is-active` en el propio botón cuando se abre
+               el menú para poder animar las barras con CSS.
+             - No uses `onclick` inline aquí: el archivo `js/main.js` registra
+               los listeners de forma centralizada. -->
 
         <span class="bar"></span>
         <span class="bar"></span>
@@ -45,6 +71,10 @@
       </section>
 
       <div class="hero-image-container right-img">
+        <!-- Imagen hero:
+             - Usa la clase `hero-img` para control responsivo en CSS.
+             - `alt` debe describir la imagen brevemente para accesibilidad.
+        -->
         <img src="assets/images/uso_cotidiano.svg" alt="Uso cotidiano de IA" class="hero-img">
       </div>
 
@@ -52,12 +82,12 @@
   </main>
 
   <footer>
-    <!-- Copyright abajo a la izquierda -->
+    <!-- Pie de página: aquí puedes actualizar el texto legal, enlaces de contacto
+         o información adicional que quieras mostrar en todas las páginas. -->
     <div class="copyright">© 2025 wikIA - sitio educativo</div>
-  </a>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 
-<!-- enlace a script -->
-<script src="js/main.js"></script>
 </html>
