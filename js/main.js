@@ -1,34 +1,13 @@
-// menu (initial duplicate removed) - consolidated initialization is defined later
-
-
-
-
-// Consolidated main.js: menu, interactions, and contact handling
-
-/*
-  main.js — Guía para principiantes
-
-  Este archivo contiene la lógica mínima necesaria para que el sitio web sea
-  interactivo. Aquí se registran los manejadores de eventos (listeners) y las
-  funciones que actualizan el DOM (la página que ves en el navegador).
-
-  Resumen de responsabilidades:
-  - Menú hamburguesa (responsive): abre/cierra el menú en móviles.
-  - Paneles dinámicos: mostrar/ocultar contenido en 'Conceptos', 'Herramientas' y FAQ.
-  - Formulario de contacto: evita recargar la página y muestra un mensaje de agradecimiento.
-
-  Consejos para entender el código:
-  - Lee las funciones pequeñas primero (`mostrarDefinicion`, `toggleSeccion`).
-  - `init()` conecta los elementos HTML con las funciones (registra eventos).
-  - Ver en el navegador: al pulsar los botones verás cambios visibles (texto, paneles, menú).
-*/
+/* main.js — Interacciones simples de UI
+   - `mostrarDefinicion(concepto)`: muestra la definición seleccionada en la sección de conceptos.
+   - `toggleSeccion(id)`: muestra/oculta secciones tipo FAQ o categorías en herramientas.
+   - `init()`: configura el botón de menú, el formulario de contacto y atributos ARIA.
+   Este archivo mantiene la lógica de interacción mínima sin dependencias externas. */
 
 /**
- * mostrarDefinicion(concepto)
- * Muestra una definición predefinida en el elemento con id "definicion".
- * - `concepto` es la clave que identifica la definición a mostrar.
- * - Si no existe `#definicion` la función sale sin errores.
- * @param {string} concepto
+ * Mostrar la definición de un concepto en la sección `#definicion`.
+ * Recibe la clave `concepto` (ej: 'ia', 'datos') y escribe el texto correspondiente.
+ * Esta función es llamada desde botones con `onclick="mostrarDefinicion('ia')"`.
  */
 function mostrarDefinicion(concepto) {
   let texto = "";
@@ -49,29 +28,33 @@ function mostrarDefinicion(concepto) {
       texto = "Las redes neuronales son estructuras inspiradas en el cerebro humano, formadas por nodos conectados en capas. El Deep Learning utiliza redes profundas para analizar datos complejos como imágenes, texto o audio.";
       break;
   }
+  // Inserta la definición en el contenedor con id `definicion`.
   const destino = document.getElementById("definicion");
   if (destino) destino.innerHTML = "<p>" + texto + "</p>";
 }
 
 
+
+
+
 /**
- * toggleSeccion(id)
- * - Alterna la visibilidad del elemento con el identificador `id`.
- * - Añade/remueve clases de fallback (`open`) que permiten que el CSS
- *   aplique estilos en navegadores que no soportan selectores modernos.
- * - Actualiza `aria-expanded` en encabezados dentro de `.pregunta`.
- * @param {string} id
+ * Mostrar u ocultar una sección por `id`.
+ * - Usado para FAQ y categorías en `pages/herramientas.html`.
+ * - Actualiza clases y atributos ARIA para accesibilidad.
  */
 function toggleSeccion(id) {
   const seccion = document.getElementById(id);
-  if (!seccion) return;
+  if (!seccion) return; // Si no existe el id, salimos sin error
 
+  // Determina si está oculta (por estilo inline) y alterna entre 'block' y 'none'
   const isHidden = seccion.style.display === 'none' || seccion.style.display === '';
   seccion.style.display = isHidden ? 'block' : 'none';
 
+  // Si la sección está dentro de un `.categoria`, alternamos la clase `open` para estilos
   const categoria = seccion.closest('.categoria');
   if (categoria) categoria.classList.toggle('open', isHidden);
 
+  // Si la sección está dentro de un `.pregunta` (FAQ) actualizamos ARIA y clase
   const pregunta = seccion.closest('.pregunta');
   if (pregunta) {
     pregunta.classList.toggle('open', isHidden);
@@ -81,18 +64,44 @@ function toggleSeccion(id) {
 }
 
 
-/**
- * init()
- * - Registra todos los listeners y aplica estados iniciales.
- * - Maneja: menú responsive, fallbacks CSS, formulario de contacto y ARIA.
- */
+
+
+
+
 function init() {
-  // Menu hamburguesa
+  /**
+   * init() — Inicializador de interacciones UI
+   *
+   * Partes principales:
+   * 1) Configuración del botón de menú (`.menu-toggle`) y de la navegación (`.nav-menu`):
+   *    - Alterna clases `active` / `is-active` para mostrar/ocultar el menú en pantallas pequeñas.
+   *    - Registra listeners de `click` y `touchstart` para soportar dispositivos táctiles.
+   *    - Previene comportamiento por defecto cuando procede.
+   *
+   * 2) Cerrar menú al navegar:
+   *    - Cada enlace dentro de `.nav-menu` cierra el menú al hacer click, mejorando UX móvil.
+   *
+   * 3) Clase de layout condicional (`has-bienvenida`):
+   *    - Si la página contiene `.bienvenida` se añade `has-bienvenida` al `body` para activar
+   *      reglas CSS específicas (por ejemplo en la página principal).
+   *
+   * 4) Manejo del formulario de contacto:
+   *    - Intercepta el `submit` del formulario `#contactForm` para evitar recarga de página.
+   *    - Muestra un mensaje de confirmación en `#respuesta` usando el nombre proporcionado.
+   *    - Resetea el formulario tras mostrar la confirmación.
+   *    - Nota: actualmente esto solo realiza una acción en cliente; no envía datos a servidor.
+   *
+   * 5) Accesibilidad para FAQs:
+   *    - Asigna `role="button"` a `.pregunta h2` y establece `aria-expanded="false"` por defecto.
+   *    - `toggleSeccion()` actualiza `aria-expanded` a `true` cuando la respuesta se muestra.
+   *
+   * 6) Registro seguro de inicialización:
+   *    - `init()` se registra para ejecutarse en `DOMContentLoaded` si el documento está cargando,
+   *      o se ejecuta inmediatamente si el DOM ya está listo.
+   */
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('.nav-menu');
   if (menuToggle && navMenu) {
-    // Handler que abre/cierra el menú: alterna clases usadas por CSS para mostrar
-    // u ocultar la navegación en pantallas pequeñas.
     const onToggle = (e) => {
       if (e && typeof e.preventDefault === 'function') e.preventDefault();
       navMenu.classList.toggle('active');
@@ -101,7 +110,6 @@ function init() {
     menuToggle.addEventListener('click', onToggle);
     menuToggle.addEventListener('touchstart', onToggle);
 
-    // Cerrar el menú cuando se pulsa un enlace: comportamiento esperado en móvil
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -110,29 +118,31 @@ function init() {
     });
   }
 
-  // Añadir clase fallback si existe la sección bienvenida (para CSS sin :has())
   if (document.querySelector('.bienvenida')) document.body.classList.add('has-bienvenida');
 
-  // Manejo de formulario de contacto (cliente): evitar recarga y mostrar mensaje
-  // Notar: esto no envía datos a un servidor; para recepción real hace falta un endpoint.
+
+
   const form = document.getElementById('contactForm');
   const respuesta = document.getElementById('respuesta');
   if (form) {
     form.addEventListener('submit', function(event) {
       event.preventDefault();
       const nombre = document.getElementById('nombre')?.value || '';
+      // Mostrar confirmación al usuario en el DOM (no se envia al servidor)
       if (respuesta) respuesta.innerHTML = `<p>¡Gracias, <strong>${nombre}</strong>! Tu comentario fue recibido.</p>`;
       form.reset();
     });
   }
 
-  // Preparar encabezados FAQ como controles accesibles (role + estado inicial)
-  // JavaScript actualiza `aria-expanded` cuando se abre/cierra la respuesta.
   document.querySelectorAll('.pregunta h2').forEach(h2 => {
     h2.setAttribute('role', 'button');
     if (!h2.hasAttribute('aria-expanded')) h2.setAttribute('aria-expanded', 'false');
   });
 }
+
+
+
+
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);

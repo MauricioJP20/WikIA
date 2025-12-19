@@ -1,7 +1,8 @@
 el sitio web esta diseñado para enseñar los fundamentos de la Inteligencia Artificial de forma clara, accesible y ética. 
 El proyecto abarca desde la historia de la IA hasta sus aplicaciones actuales, conceptos clave y consideraciones éticas.
 
-https://mauriciojp20.github.io/WikIA/](https://mauriciojp20.github.io/WikIA/)
+https://mauriciojp20.github.io/WikIA/
+(https://mauriciojp20.github.io/WikIA/)
 
 
 Contenido
@@ -81,7 +82,9 @@ WikIA/
 │   ├── etica.html         
 │   └── contact.html        
 ├── assets/
-│   └── images/             
+│   |── images/ 
+|   └── icons/
+|── Readme.txt    
 └── sitemap.xml            
 
 

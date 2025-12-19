@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -11,16 +10,8 @@
 </head>
 
 <body>
-  <!--
-    Página Historia (timeline):
-    - El timeline está compuesto por artículos .decada que muestran eventos por década.
-    - Los puntos en la línea usan pseudo-elementos CSS para colocarse en la línea central.
-    - En móvil, las imágenes decorativas se ocultan y el layout se adapta gracias a
-      las reglas dentro de los @media queries en `css/styles.css`.
-  -->
   <header>
    <a href="../index.html" class="logo">WikIA</a>
-    
     <button class="menu-toggle" aria-label="Abrir menú">
      <span class="bar"></span>
      <span class="bar"></span>
@@ -38,24 +29,18 @@
   </header>
 
   <main>
-   <h1>Breve historia de la IA</h1>
-   <p>Un recorrido por los hitos más relevantes de la Inteligencia Artificial, década por década.</p>
+    <h1>Breve historia de la IA</h1>
+    <p>Un recorrido por los hitos más relevantes de la Inteligencia Artificial, década por década.</p>
 
-        <!-- Línea de tiempo: cada `.decada` es una tarjeta con contenido; las
-          pseudo-elementos y `::after` dibujan la línea central y los puntos.
-          Si añades más tarjetas, respeta la estructura HTML para mantener
-          la línea y los puntos correctamente alineados. -->
-        <section id="timeline">
+    <section id="timeline">
       <article class="decada">
-        <div class="decada-info">
-         <h2>1950s - Primeras ideas y fundamentos</h2>
-          <ul>
-           <li><strong>1950:</strong> Alan Turing publica <em>Computing Machinery and Intelligence</em> y propone el Test de Turing.</li>
-           <li><strong>1951:</strong> Christopher Strachey desarrolla uno de los primeros programas de ajedrez.</li>
-           <li><strong>1956:</strong> Conferencia de Dartmouth, considerada el nacimiento oficial de la IA como disciplina.</li>
-          </ul>
-        </div>
-        <img src="../assets/images/ideas.svg" alt="Alan Turing" class="timeline-side-img">
+       <h2>1950s - Primeras ideas y fundamentos</h2>
+       <img src="../assets/images/ideas.svg" alt="Alan Turing" class="timeline-side-img">
+        <ul>
+         <li><strong>1950:</strong> Alan Turing publica <em>Computing Machinery and Intelligence</em> y propone el Test de Turing.</li>
+         <li><strong>1951:</strong> Christopher Strachey desarrolla uno de los primeros programas de ajedrez.</li>
+         <li><strong>1956:</strong> Conferencia de Dartmouth, considerada el nacimiento oficial de la IA como disciplina.</li>
+        </ul>
       </article>
 
       <article class="decada">
@@ -133,7 +118,6 @@
   <footer>
     <p>© 2025 wikIA - sitio educativo</p>
   </footer>
-  <!-- Cargar `js/main.js` al final del body: asegura que el DOM exista antes de ejecutar `init()` -->
   <script src="../js/main.js"></script>
 </body>
 

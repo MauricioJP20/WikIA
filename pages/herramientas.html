@@ -1,28 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WikIA - Herramientas</title>
-  <link rel="icon" href="../assets/images/logoIA.png" type="image/png">
-  <link rel="stylesheet" href="../css/styles.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>WikIA - Herramientas</title>
+ <link rel="icon" href="../assets/images/logoIA.png" type="image/png">
+ <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
-  <!--
-    Página de Herramientas:
-    - Cada bloque .categoria es expandible; al hacer click se ejecuta
-      `toggleSeccion('id')` para mostrar la lista interna (.contenido).
-    - Los enlaces dentro de las listas abren sitios externos en pestañas nuevas
-      (se agregó `rel="noopener noreferrer"` por seguridad).
-    - Para mejorar accesibilidad, se podría reemplazar el `onclick` del
-      <article> por un botón con control de teclado; esto facilita su uso.
-  -->
   <header>
     <a href="../index.html" class="logo">WikIA</a>
-    
     <button class="menu-toggle" aria-label="Abrir menú">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -44,12 +33,6 @@
     <p>Explora las principales herramientas de Inteligencia Artificial según el área de aplicación.</p>
 
     <section id="herramientas">
-      <!-- Estructura de las categorías:
-           - Cada <article class="categoria"> contiene un listado oculto (.contenido).
-           - El atributo `onclick` en el HTML llama a `toggleSeccion(id)`.
-           - Recomendación: migrar `onclick` inline a listeners en `js/main.js`
-             para mantener el HTML limpio y facilitar pruebas. -->
-
       <article class="categoria" onclick="toggleSeccion('imagenes')">
         <h2>Imágenes</h2>
         <div id="imagenes" class="contenido" style="display:none;">
@@ -122,8 +105,6 @@
   <footer>
     <p>© 2025 wikIA - sitio educativo</p>
   </footer>
-
-  <!-- Cargar `js/main.js` al final del body: asegura que el DOM exista antes de ejecutar `init()` -->
   <script src="../js/main.js"></script>
 </body>
 </html>

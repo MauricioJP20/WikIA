@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -11,18 +10,8 @@
 </head>
 
 <body>
-  <!--
-    Página de Ética (FAQ):
-    - Cada pregunta está en un elemento .pregunta; su respuesta se muestra/oculta
-      con `toggleSeccion(id)` del archivo `js/main.js`.
-    - El encabezado <h2> actúa como disparador; JavaScript actualiza el
-      atributo `aria-expanded` para informar el estado a lectores de pantalla.
-    - El CSS usa reglas modernas (p. ej. :has) para estilos dependientes del DOM,
-      pero también hay fallback con la clase `.pregunta.open` aplicada por JS.
-  -->
   <header>
    <a href="../index.html" class="logo">WikIA</a>
-    
     <button class="menu-toggle" aria-label="Abrir menú">
      <span class="bar"></span>
      <span class="bar"></span>
@@ -43,16 +32,12 @@
    <h1>Ética en la Inteligencia Artificial</h1>
    <p>Explora las principales preguntas éticas sobre el futuro de la IA.</p>
 
-        <!-- FAQ: cada pregunta se compone de un encabezado que actúa como disparador
-          y un contenedor con la respuesta. `js/main.js` actualiza `aria-expanded`
-          y aplica la clase `.open` como fallback para que el CSS pueda mostrar
-          u ocultar el contenido. -->
     <section id="faq">
 
       <article class="pregunta">
        <h2 onclick="toggleSeccion('q1')">¿Cómo pueden los algoritmos ser más transparentes?</h2>
-       <div id="q1" class="respuesta" style="display:none;">
-          <p>Los sistemas de IA deben explicar cómo toman decisiones. La falta de claridad puede generar desconfianza y sesgos ocultos. A futuro, será esencial que los modelos sean auditables y comprensibles para todos.</p>
+        <div id="q1" class="respuesta" style="display:none;">
+         <p>Los sistemas de IA deben explicar cómo toman decisiones. La falta de claridad puede generar desconfianza y sesgos ocultos. A futuro, será esencial que los modelos sean auditables y comprensibles para todos.</p>
         </div>
       </article>
 
@@ -118,15 +103,11 @@
          <p>La sociedad necesita comprender cómo funciona la IA para usarla de manera crítica. Sin educación, los usuarios pueden ser manipulados o desinformados. A futuro, la ética incluirá promover conocimiento accesible sobre estas tecnologías.</p>
         </div>
       </article>
-
     </section>
   </main>
-
   <footer>
     <p>© 2025 wikIA - sitio educativo</p>
   </footer>
-
-  <!-- Cargar `js/main.js` al final del body: asegura que el DOM exista antes de ejecutar `init()` -->
   <script src="../js/main.js"></script>
 </body>
 </html>
